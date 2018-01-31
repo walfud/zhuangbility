@@ -4,29 +4,29 @@
  * @returns A string represent the arguments' integer
  */
 const getNumber = (function () {
-    const meta = {
+    const num = {
         0: '+[]',
         1: '+!![]',
     }
-    // Gnerate meta number map, 0-9
-    ~(function genMeta(n) {
+    // Gnerate number map, 0-9
+    ~(function genNum(n) {
         if (n === 1) {
-            return meta[1]
+            return num[1]
         } else {
-            return meta[n] = genMeta(n - 1) + meta[1]
+            return num[n] = genNum(n - 1) + num[1]
         }
     }
     )(9)
 
     // 
     return function (n) {
-        if (0 <= n && n <= 9) {
-            return meta[n]
+        if (num.hasOwnProperty(n)) {
+            return num[n]
         } else {
-            return `+([]+${('' + n).split('').map(i => `(${meta[i]})`).join('+')})`
+            return num[n] = `+([]+${('' + n).split('').map(i => `(${num[i]})`).join('+')})`
         }
     }
 })()
 
-
+console.log(getNumber(3))
 console.log(getNumber(1942))
