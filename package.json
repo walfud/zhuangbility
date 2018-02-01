@@ -11,5 +11,8 @@
     "url": "https://github.com/walfud/zhuangbility.git"
   },
   "author": "walfud <hi@walfud.com> (https://github.com/walfud)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^22.1.4"
+  }
 }
