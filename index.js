@@ -1,3 +1,4 @@
+#! node
 
 /**
  * @param n Integer number, such as: 1, 1942, -1942
@@ -112,4 +113,9 @@ const fromString = (function () {
 module.exports = {
     fromNumber,
     fromString,
+}
+
+const cliArgs = process.argv.splice(2)
+if (cliArgs) {
+    console.log(fromString(cliArgs.join(' ')))
 }

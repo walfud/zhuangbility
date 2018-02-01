@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jest"
   },
+  "bin": {
+    "zhuangbility": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/walfud/zhuangbility.git"
