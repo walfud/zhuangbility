@@ -109,7 +109,7 @@ const fromString = (function () {
     }
 })()
 
-module.export = {
+module.exports = {
     fromNumber,
     fromString,
 }
