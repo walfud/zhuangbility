@@ -60,11 +60,11 @@ Now, We can get 'f' by `([]+ ![]) [+[]]` (front part `[]+![]` is string 'false',
 
 Let's take full advantage of the above rule:
 
-* `'[]+{}'`,            // '[object Object]'
-* `'[]+![]'`,           // 'false'
-* `'[]+!![]'`,          // 'true'
-* `'[]+[][[]]'`,        // 'undefined'
-* `'[]+(+[]+[][[]])'`,  // 'NaN'
+* `[]+{}`,            // '[object Object]'
+* `[]+![]`,           // 'false'
+* `[]+!![]`,          // 'true'
+* `[]+[][[]]`,        // 'undefined'
+* `[]+(+[]+[][[]])`,  // 'NaN'
 
 Now we have many character: 'abcdefj...' and all number.
 
