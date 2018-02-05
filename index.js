@@ -120,9 +120,8 @@ module.exports = {
  * @param 
  */
 const program = require('commander')
-const package = require('./package.json')
 program
-    .version(package.version)
+    .version(require('./package.json').version)
     .option('-r, --runtime <runtime>', 'Transform to runtime code')
     .parse(process.argv)
 
