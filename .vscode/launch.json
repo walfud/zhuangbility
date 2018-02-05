@@ -10,8 +10,8 @@
             "name": "Launch Program",
             "program": "${workspaceFolder}\\index.js",
             "args": [
-                "sometime, ",
-                "someone"
+                "--runtime",
+                "console.log('sometime, someone')",
             ]
         }
     ]

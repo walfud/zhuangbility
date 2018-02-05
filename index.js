@@ -115,7 +115,19 @@ module.exports = {
     fromString,
 }
 
-const cliArgs = process.argv.splice(2)
-if (cliArgs) {
-    console.log(fromString(cliArgs.join(' ')))
+
+/**
+ * @param 
+ */
+const program = require('commander')
+const package = require('./package.json')
+program
+    .version(package.version)
+    .option('-r, --runtime <runtime>', 'Transform to runtime code')
+    .parse(process.argv)
+
+if (program.runtime) {
+    console.log(`[][${fromString('sort')}][${fromString('constructor')}](${fromString(program.runtime)})()`)
+} else if (program.args[0]) {
+    console.log(fromString(program.args[0]))
 }
