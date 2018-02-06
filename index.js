@@ -142,8 +142,6 @@ module.exports = {
     fromString,
 }
 
-fromString("\n")
-
 
 /**
  * @param 
