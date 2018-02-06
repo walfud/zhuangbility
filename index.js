@@ -62,7 +62,13 @@ const fromString = (function () {
         char[i] = `[]+(${fromNumber(i)})`
     }
 
-    function transform(code) {
+    // Keep simple char
+    const simpleChar = {
+        ...char,
+    }
+
+    // Transform char into magic string
+    function transform(code, map = char) {
         return code
             .split('')
             .map(c => {
@@ -94,7 +100,7 @@ const fromString = (function () {
 
     // Fill other with `unescape`
     // There should be an other way because `unescape` is deprecated and will be remove in future
-    for (let i = 32; i < 128; i++) {
+    for (let i = 0; i < 256; i++) {
         const hexStr = i.toString(16)
         const c = unescape(`%${hexStr}`)
         if (char.hasOwnProperty(c)) {
@@ -106,7 +112,28 @@ const fromString = (function () {
     }
 
     return function (str) {
-        return transform(str)
+        // Simple string
+        if (str.split('').every(c => simpleChar[c])) {
+            return transform(str, simpleChar)
+        }
+
+        // Complex string, use unescape
+        const hexCodes = str
+            .split('')
+            .map(c => c.charCodeAt(0).toString(16))
+            .map(hex => {
+                switch (hex.length) {
+                    case 1:
+                        return transform(`0${hex}`)
+                    case 2:
+                        return transform(`${hex}`)
+                    default:
+                        return transform(`u${hex}`)
+                }
+            })
+            .map(code => `'%'+${code}`)
+            .join('+')
+        return `[][${transform('sort')}][${transform('constructor')}](${transform('return unescape')})()(${hexCodes})`
     }
 })()
 
@@ -114,6 +141,8 @@ module.exports = {
     fromNumber,
     fromString,
 }
+
+fromString("\n")
 
 
 /**
