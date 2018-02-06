@@ -2,6 +2,10 @@
 
 transform string/code into "(([]+{})[+!![]+!![]+!![]])+(([]+![])[+!![]+!![]+!![]])".
 
+[NPM page](https://www.npmjs.com/package/zhuangbility)
+
+[Travis page](https://travis-ci.org/walfud/zhuangbility)
+
 ## Usage
 
 ```shell
