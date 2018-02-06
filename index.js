@@ -1,4 +1,4 @@
-#! node
+#!/usr/bin/env node
 
 /**
  * @param n Integer number, such as: 1, 1942, -1942
