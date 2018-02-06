@@ -9,6 +9,18 @@
   "engines": {
     "node" : ">=8.9.4"
   },
+  "keywords": [
+    "hack",
+    "magic",
+    "implicit",
+    "conversion",
+    "js",
+    "encript",
+    "util",
+    "sign",
+    "symbol",
+    "cli"
+  ],
   "bin": {
     "zhuangbility": "./index.js"
   },
