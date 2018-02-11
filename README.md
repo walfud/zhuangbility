@@ -34,11 +34,20 @@ Use *--runtime* if you want generate a runnable code:
 
 ```shell
 # Generate magic code to a file
-zhuangbility --runtime "console.log('foo bar')" > test.js
+zhuangbility --runtime "for (let i = 0; i < 100; i++) console.log(`foo-${i}-bar`)" > test.js
 
 # Run the magic code directly
 node test.js
 ```
+
+*NOTE*: your code can **NOT** `require` other module in code mode. That means:
+
+```shell
+# Wrong !!!
+zhuangbility --runtime "require('fs'); console.log(fs)" > test.js
+```
+
+will get undefined result. It's really a painful restrict for now.
 
 ## Under the Hood
 
@@ -97,6 +106,13 @@ Let's combine all of above:
 You can get all you want...
 
 For more detail, please read the fucking source code.
+
+## FAQ
+
+### RangeError: Maximum call stack size exceeded
+
+Our magic string ([()][]{}...) is equal to a long expression, which is easily to exceed the default stack size. Use `--stack-size=10000000` (such as: `node --stack-size=1000000 -f *magic file*`) to specify a larger size. 
+
 
 ## Liscence
 
