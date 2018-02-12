@@ -12,7 +12,12 @@
             "args": [
                 // "--runtime",
                 // "console.log('sometime, someone')",
-                "中z文",
+
+                // "中z文",
+
+                "--runtime",
+                "--file",
+                "./src.js",
             ]
         }
     ]

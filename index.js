@@ -112,6 +112,10 @@ const fromString = (function () {
     }
 
     return function (str) {
+        if (!str) {
+            return ''
+        }
+
         // Simple string
         if (str.split('').every(c => simpleChar[c])) {
             return transform(str, simpleChar)
@@ -131,7 +135,7 @@ const fromString = (function () {
                         return transform(`u${hex}`)
                 }
             })
-            .map(code => `'%'+${code}`)
+            .map(code => `('%'+${code})`)
             .join('+')
         return `[][${transform('sort')}][${transform('constructor')}](${transform('return unescape')})()(${hexCodes})`
     }
@@ -146,14 +150,19 @@ module.exports = {
 /**
  * @param 
  */
+const fs = require('fs')
 const program = require('commander')
 program
     .version(require('./package.json').version)
-    .option('-r, --runtime <runtime>', 'Transform to runtime code')
+    .option('-r, --runtime', 'Transform to runable code')
+    .option('-f, --file <s>', 'Read from a file')
     .parse(process.argv)
+const args = program.args.join(' ')
+
+let content = program.file ? fs.readFileSync(program.file, 'utf8') : args
 
 if (program.runtime) {
-    console.log(`[][${fromString('sort')}][${fromString('constructor')}](${fromString(program.runtime)})()`)
-} else if (program.args[0]) {
-    console.log(fromString(program.args[0]))
+    console.log(`[][${fromString('sort')}][${fromString('constructor')}](${fromString(content)})()`)
+} else if (content) {
+    console.log(fromString(content))
 }
