@@ -1,6 +1,8 @@
 # zhuangbility
 
-transform string/code into "(([]+{})[+!![]+!![]+!![]])+(([]+![])[+!![]+!![]+!![]])".
+Transform string/code into "(([]+{})[+!![]+!![]+!![]])+(([]+![])[+!![]+!![]+!![]])".
+
+Support both Browser and Node.js environment.
 
 [NPM page](https://www.npmjs.com/package/zhuangbility)
 
