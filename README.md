@@ -115,6 +115,9 @@ For more detail, please read the fucking source code.
 
 Our magic string ([()][]{}...) is equal to a long expression, which is easily to exceed the default stack size. Use `--stack-size=10000000` (such as: `node --stack-size=1000000 -f *magic file*`) to specify a larger size. 
 
+## Ref
+
+[What the f*ck JavaScript?](https://github.com/denysdovhan/wtfjs)
 
 ## Liscence
 
